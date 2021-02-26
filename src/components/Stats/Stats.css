@@ -1,0 +1,23 @@
+.stats {
+  height: 100vh;
+  display: flex;
+}
+
+.stats-left,
+.stats-right {
+  height: 100%;
+  width: 50%;
+}
+
+.stats-right {
+  background-color: #eefdfe;
+}
+
+.cases {
+  display: flex;
+}
+
+.stats-left {
+  color: #999999;
+  text-align: center;
+}
