@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Auth";
+import { auth } from "../../firebase";
 import "./Navbar.css";
 
 function Navbar() {
+  const { currentUser } = useContext(AuthContext);
   return (
     <div className="navbar">
       <div className="navbar__left">
@@ -11,7 +14,7 @@ function Navbar() {
         <a>Home</a>
         <a>Hospitals</a>
         <a>Users</a>
-        <a>LOGIN/SIGNUP</a>
+        <button onClick={auth.signOut()}>LOGIN/SIGNUP</button>
       </div>
     </div>
   );
