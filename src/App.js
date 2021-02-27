@@ -7,6 +7,7 @@ import Hospital from "./containers/Hospital/Hospital";
 import Register from "./containers/Registration/Registration";
 import PrivateRoute from "./PrivateRoute";
 import AdminLogin from "./containers/AdminLogin/AdminLogin";
+import Appointment from "./containers/Appointment/Appointment";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route exact path="/register">
               <Register />
+            </Route>
+            <Route exact path="/appointment">
+              <Appointment />
             </Route>
             <PrivateRoute exact path="/admin" component={Hospital} />
             <Route exact path="/admin/login">

@@ -29,15 +29,15 @@ export default class Hospital extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const hospital = {
-      id: this.state.id,
+      id: Number(this.state.id),
       name: this.state.name,
       address: this.state.address,
       contact: this.state.contact,
-      latitude: this.state.latitude,
-      longitude: this.state.longitude,
-      covaxin: this.state.covaxin,
-      covishield: this.state.covishield,
-      sputinik: this.state.sputinik,
+      latitude: Number(this.state.latitude),
+      longitude: Number(this.state.longitude),
+      covaxin: Number(this.state.covaxin),
+      covishield: Number(this.state.covishield),
+      sputinik: Number(this.state.sputinik),
     };
     console.log(hospital);
     db.collection("hospitals").add(hospital);

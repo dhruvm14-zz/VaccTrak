@@ -8,22 +8,20 @@ function AdminLogin({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = useCallback(
-    async (event) => {
-      event.preventDefault();
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      await auth.signInWithEmailAndPassword(email.trim(), password);
+      history.push("/admin/login");
+    } catch (error) {
       console.log(email);
-      try {
-        await auth.signInWithEmailAndPassword(email.trim(), password);
-        history.push("/");
-      } catch (error) {
-        alert(error);
-      }
-    },
-    [history]
-  );
+      alert(error);
+    }
+  };
 
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
+    console.log(currentUser);
     return <Redirect to="/admin" />;
   }
 
@@ -35,16 +33,18 @@ function AdminLogin({ history }) {
         onSubmit={handleLogin}
       >
         <input
-          type="text"
+          type="email"
           name="email"
           placeholder="Username"
+          autoComplete="off"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
-          type="text"
+          type="Password"
           name="name"
-          placeholder="Name"
+          placeholder="Password"
+          autoComplete="off"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
